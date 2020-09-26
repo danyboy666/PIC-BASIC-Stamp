@@ -1,0 +1,62 @@
+'
+' =========================================================================
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+'
+' =========================================================================
+
+' -----[ Program Description ]---------------------------------------------
+'  Horloge Numérique avec afficheur a 7 segments
+' Codé par Dany Ferron
+' Groupe 2471
+' Introduction aux circuits numériques
+' Remis à Robert Sasseville
+
+' -----[ I/O Definitions ]-------------------------------------------------
+DIRA = %1111
+OUTA = 0
+DIRB = %1111
+OUTB = 0
+OUTPUT 8
+OUT8 = 1
+OUTPUT9
+OUT9 = 1
+OUTPUT 10
+OUT10 = 1
+
+
+' -----[ Constants ]-------------------------------------------------------
+
+
+' -----[ Variables ]-------------------------------------------------------
+Hr10 VAR Nib
+Hr1 VAR Nib
+Min10 VAR Nib
+Min1 VAR Nib
+
+
+
+
+' -----[ EEPROM Data ]-----------------------------------------------------
+
+' -----[ Initialization ]--------------------------------------------------
+
+' -----[ Program Code ]----------------------------------------------------
+
+Main:
+
+  OUTA = 1
+  OUTB = 1
+  OUT8 = 1
+  OUT9 = 1
+  OUT10 = 1
+
+  DO
+    FOR Minutes = 0 TO 9
+    OUTA = Minutes
+      PAUSE 1000
+      PAUSE 2000
+    NEXT
+  LOOP
+
+' -----[ Subroutines ]-----------------------------------------------------

@@ -1,0 +1,75 @@
+'
+' =========================================================================
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+'
+' =========================================================================
+
+' -----[ Program Description ]---------------------------------------------
+' Compteur Partie 1
+' Codé par Dany Ferron
+' Groupe 2471
+' Introduction aux circuits numériques
+' Remis à Robert Sasseville
+
+' -----[ I/O Definitions ]-------------------------------------------------
+OUTPUT 1
+OUT1 = 1
+OUTPUT 2
+OUT2 = 1
+OUTPUT 3
+OUT3 = 1
+OUTPUT 4
+OUT4 = 1
+OUTPUT 5
+OUT5 = 1
+OUTPUT 6
+OUT6 = 1
+OUTPUT 7
+OUT7 = 1
+OUTPUT 8
+OUT8 = 1
+
+
+' -----[ Constants ]-------------------------------------------------------
+
+
+' -----[ Variables ]-------------------------------------------------------
+test1 VAR Nib
+test2 VAR Nib
+
+' -----[ EEPROM Data ]-----------------------------------------------------
+
+' -----[ Initialization ]--------------------------------------------------
+
+' -----[ Program Code ]----------------------------------------------------
+
+Main:
+
+    OUT8 = 0
+    OUT9 = 1
+
+  DO
+    FOR test1 = 0 TO 9
+    OUT1 = test1
+    OUT2 = test1
+    OUT3 = test1
+    OUT4 = test1
+      PAUSE 1000
+      PAUSE 2000
+    NExt
+
+    OUT8 = 1
+    OUT9 = 0
+
+    FOR test2 = 0 TO 9
+    OUT5 = test2
+    OUT6 = test2
+    OUT7 = test2
+    OUT8 = test2
+      PAUSE 1000
+      PAUSE 2000
+    NEXT
+  LOOP
+
+' -----[ Subroutines ]-----------------------------------------------------
