@@ -1,0 +1,64 @@
+'================================================================================================================
+
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+'
+'================================================================================================================
+
+'-----[Program Descrition]---------------------------------------------
+'FEUX DE CIRCULATIONS AVEC BOUTON DE PIETONS
+'Transitions des feux lors de l'appui du bouton
+'           GREEN
+'           YELLOW
+'           RED
+
+'-----[I/O DEFINITIONS]------------------------------------------------
+
+E_W_GREEN       PIN    1
+E_W_YELLOW      PIN    2
+E_W_RED         PIN    3
+N_S_GREEN       PIN    4
+N_S_YELLOW      PIN    5
+N_S_RED         PIN    6
+
+'-----[CONTANTS]-------------------------------------------------------
+
+GreenDuration   CON    5000
+YellowDuration  CON    2000
+RedDuration     CON    5000
+
+
+'-----[Program Code]---------------------------------------------------
+
+Main:
+
+  DO
+
+' allume le feu rouge EST-OUEST pour 5 secondes
+    HIGH  E_W_RED
+    LOW   E_W_YELLOW
+    LOW   E_W_GREEN
+
+    PAUSE RedDuration
+
+' allume le feu VERT NORD-SUD pour 5 secondes
+
+    HIGH  N_S_GREEN
+    LOW   N_S_YELLOW
+    LOW   N_S_RED
+
+    PAUSE GreenDuration
+
+' allume les feux jaunes pour 2 secondes
+
+    HIGH  N_S_YELLOW
+    HIGH  E_W_YELLOW
+
+    PAUSE YellowDuration
+
+ LOOP
+
+ END
+
+'-----[Subsoutines]---------------------------------------------------
+

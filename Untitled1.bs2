@@ -1,0 +1,40 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+OUTPUT 1
+OUT1 = 1
+OUTPUT 2
+OUT2 = 1
+OUTPUT 3
+OUT3 = 1
+OUTPUT 4
+OUT4 = 1
+OUTPUT 5
+OUT5 = 1
+OUTPUT 6
+OUT6 = 1
+BPieton VAR Bit
+BPieton = 0
+OUTPUT 10
+OUT10 = 0
+INPUT 8
+
+main:
+  OUT1 = 0
+  IF IN8 = 0 THEN BPieton = 1
+  OUT3 = 1
+  OUT5 = 1
+  OUT6 = 0
+  PAUSE 5000
+  OUT1 = 1
+  OUT2 = 0
+  PAUSE 2000
+  OUT2 = 1
+  OUT6 = 1
+  OUT4 = 0
+  OUT3 = 0
+  PAUSE 5000
+  OUT4 = 1
+  OUT5 = 0
+  PAUSE 2000
+ GOTO MAIN

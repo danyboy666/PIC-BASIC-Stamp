@@ -1,0 +1,129 @@
+' =========================================================================
+'   {$STAMP BS2}
+'   {$PBASIC 2.5}
+' =========================================================================
+
+' -----[ Program Description ]---------------------------------------------
+' FEU DE CIRCULATION AVEC BOUTON POUR PASSAGE PIETON
+' (Laboratoire 17 partie 3)
+
+' Code par Dany et Amelie
+
+' -----[ I/O Definitions ]-------------------------------------------------
+
+OUTPUT 1       'LED Verte E/W en sortie
+OUT1 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 2       'LED Jaune E/W en sortie
+OUT2 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 3       'LED Rouge E/W en sortie
+OUT3 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 4       'LED Verte N/S en sortie
+OUT4 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 5       'LED Jaune N/S en sortie
+OUT5 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 6       'LED Rouge N/S en sortie
+OUT6 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 10      'LED pour pieton est configure en sortie
+OUT10 = 1      'S'assurer que la LED est a OFF au demarrage
+INPUT 8        'Bouton pieton configure en entre
+
+' -----[ Variables ]-------------------------------------------------------
+
+BPieton VAR Bit
+BPieton = 0
+I VAR Byte
+
+' -----[ Program Code ]----------------------------------------------------
+
+main:
+
+DO
+
+'(Lumiere Verte E/W et Rouge N/S ON)
+
+   OUT1 = 0
+   OUT6 = 0
+   OUT3 = 1
+   OUT5 = 1
+
+  FOR I = 1 TO 10
+
+    PAUSE 500
+
+     IF IN8 = 0 THEN BPieton = 1
+
+  NEXT
+
+'(Lumiere Jaune E/W et Rouge N/S a ON)
+
+   OUT2 = 0
+   OUT1 = 1
+
+  FOR I = 1 TO 8
+
+    PAUSE 250
+
+     IF IN8 = 0 THEN BPieton = 1
+
+  NEXT
+
+'(Lumiere Rouge E/W et Verte N/S a ON)
+
+    IF BPieton = 1 THEN GOSUB Signal
+
+   OUT3 = 0
+   OUT4 = 0
+   OUT2 = 1
+   OUT6 = 1
+
+  FOR I = 1 TO 10
+
+    PAUSE 500
+
+     IF IN8 = 0 THEN BPieton = 1
+
+  NEXT
+
+'(Lumiere Rouge E/W et Jaune N/S a ON)
+
+   OUT5 = 0
+   OUT4 = 1
+
+  FOR I = 1 TO 8
+
+    PAUSE 250
+
+     IF IN8 = 0 THEN BPieton = 1
+
+  NEXT
+
+    IF BPieton = 1 THEN GOSUB Signal
+
+LOOP
+
+' -----[ Subroutines ]-----------------------------------------------------
+' (Signal de pieton clignontant)
+
+Signal:
+
+    OUT3 = 0
+    OUT6 = 0
+    OUT1 = 1
+    OUT2 = 1
+    OUT4 = 1
+    OUT5 = 1
+    OUT10 = 0
+
+  FOR I = 1 TO 8
+
+    PAUSE 250
+     OUT10 = 0
+
+    PAUSE 125
+     OUT10 = 1
+
+  NEXT
+
+   BPieton = 0
+
+RETURN

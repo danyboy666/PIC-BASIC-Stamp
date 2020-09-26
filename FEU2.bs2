@@ -1,0 +1,61 @@
+' =========================================================================
+'   {$STAMP BS2}
+'   {$PBASIC 2.5}
+' =========================================================================
+
+' -----[ Program Description ]---------------------------------------------
+' SIMPLE TRAFFIC LIGHT CIRCUIT SIMULATION
+' Traffic Light Transition:
+'                       RED
+'                       GREEN
+'                       YELLOW
+
+' -----[ I/O Definitions ]-------------------------------------------------
+
+RedLED          PIN     15
+YellowLED       PIN     10
+GreenLED        PIN     5
+
+RedDuration     CON     20000           '-- 20 sec
+GreenDuration   CON     20000           '-- 20 sec
+YellowDuration  CON     10000           '-- 10 sec
+
+' -----[ Constants ]-------------------------------------------------------
+
+' -----[ Variables ]-------------------------------------------------------
+
+' -----[ EEPROM Data ]-----------------------------------------------------
+
+' -----[ Initialization ]--------------------------------------------------
+
+Reset:
+
+' -----[ Program Code ]----------------------------------------------------
+
+Main:
+
+  DO
+
+'-- turn only Red light on for 20sec
+    HIGH  RedLED
+    LOW   YellowLED
+    LOW   GreenLED
+
+    PAUSE RedDuration
+
+'-- turn only Green light on for 20sec
+    LOW   RedLED
+    HIGH  GreenLED
+
+    PAUSE GreenDuration
+
+'-- turn only Yellow light on for 10sec
+    LOW   GreenLED
+    HIGH  YellowLED
+
+    PAUSE YellowDuration
+
+  LOOP
+
+  END
+' -----[ Subroutines ]-----------------------------------------------------

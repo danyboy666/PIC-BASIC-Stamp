@@ -1,0 +1,34 @@
+'
+================================================================================================================
+
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+================================================================================================================
+
+'-----[Program Descrition]---------------------------------------------
+'FEUX DE CIRCULATIONS AVEC BOUTON DE PIETONS
+'Transitions des feux lors de l'appui du bouton
+'           GREEN
+'           YELLOW
+'           RED
+'Fonction du bouton pieton
+'           Verifier etat des feux
+'           Si GREEN les feux doivent passer au YELLOW, ensuite au RED et activer le signal pieton
+'           Si RED il doit activer le signal pieton
+
+'-----[I/O DEFINITIONS]------------------------------------------------
+
+E/W_RED     PIN    1
+E/W_YELLOW  PIN
+
+'-----[PROGRAM CODE]---------------------------------------------------
+
+Main:
+
+  DO
+
+' allume le feu rouge EST-OUEST pour 5 secondes
+    HIGH E/W_RED
+    LOW
+

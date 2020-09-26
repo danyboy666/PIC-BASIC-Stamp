@@ -1,0 +1,114 @@
+' =========================================================================
+'   {$STAMP BS2}
+'   {$PBASIC 2.5}
+' =========================================================================
+
+' -----[ Program Description ]---------------------------------------------
+' FEU DE CIRCULATION AVEC BOUTON POUR PASSAGE PIETON
+' (Laboratoire 17 partie 3)
+
+' Code par Dany et Amelie
+
+' -----[ I/O Definitions ]-------------------------------------------------
+
+OUTPUT 1       'LED Verte E/W en sortie
+OUT1 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 2       'LED Jaune E/W en sortie
+OUT2 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 3       'LED Rouge E/W en sortie
+OUT3 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 4       'LED Verte N/S en sortie
+OUT4 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 5       'LED Jaune N/S en sortie
+OUT5 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 6       'LED Rouge N/S en sortie
+OUT6 = 1       'S'assurer que la LED est a OFF au demarrage
+OUTPUT 10      'LED pour pieton est configure en sortie
+OUT10 = 1      'S'assurer que la LED est a OFF au demarrage
+INPUT 8        'Bouton pieton configure en entre
+
+' -----[ Variables ]-------------------------------------------------------
+
+BPieton VAR Bit
+BPieton = 0
+
+' -----[ Program Code ]----------------------------------------------------
+
+main:
+
+DO
+
+'(Lumiere Verte E/W et Rouge N/S ON)
+
+   OUT1 = 0
+   OUT6 = 0
+   OUT2 = 1
+   OUT3 = 1
+   OUT4 = 1
+   OUT5 = 1
+
+    IF IN8 = 0 THEN BPieton = 1
+
+  PAUSE 5000
+
+'(Lumiere Jaune E/W et Rouge N/S a ON)
+
+   OUT2 = 0
+   OUT6 = 0
+   OUT1 = 1
+
+    IF IN8 = 0 THEN BPieton = 1
+
+  PAUSE 2000
+
+'(Lumiere Rouge E/W et Verte N/S a ON)
+
+    IF BPieton = 1 THEN GOSUB Signal
+
+   OUT3 = 0
+   OUT4 = 0
+   OUT2 = 1
+   OUT6 = 1
+
+    IF IN8 = 0 THEN BPieton = 1
+
+  PAUSE 5000
+
+'(Lumiere Rouge E/W et Jaune N/S a ON)
+
+   OUT3 = 0
+   OUT5 = 0
+   OUT2 = 1
+   OUT6 = 1
+
+    IF IN8 = 0 THEN BPieton = 1
+
+  PAUSE 2000
+
+    IF BPieton = 1 THEN GOSUB Signal
+
+LOOP
+
+' -----[ Subroutines ]-----------------------------------------------------
+
+Signal:
+
+    OUT3 = 0
+    OUT6 = 0
+    OUT1 = 1
+    OUT2 = 1
+    OUT4 = 1
+    OUT5 = 1
+    OUT10 = 0
+
+
+
+   PAUSE 5000
+
+   
+
+    OUT10 = 1
+
+    BPieton = 0
+
+RETURN
